@@ -1,4 +1,3 @@
-<!-- Project Page Template -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,68 +5,186 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Muhammad Ahsan</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50">
+<body class="font-sans text-gray-800 bg-white">
 
   <!-- Header -->
-  <header class="px-6 py-4 bg-white shadow-sm sticky top-0 z-50">
+  <header class="px-6 py-5 bg-white border-b sticky top-0 z-50">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold text-indigo-700">Ahsan.dev</h1>
-      <nav class="space-x-6 font-medium text-gray-700">
+      <a href="index.html" class="text-xl font-bold text-gray-900">Muhammad Ahsan</a>
+      <nav class="hidden md:flex space-x-6 font-medium text-gray-600">
         <a href="index.html" class="hover:text-indigo-600">Home</a>
-        <a href="#" class="text-indigo-600 font-semibold">Projects</a>
+        <a href="project.html" class="text-indigo-600 font-semibold border-b-2 border-indigo-600 pb-1">Projects</a>
         <a href="index.html#contact" class="hover:text-indigo-600">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Title -->
-  <section class="text-center py-20">
-    <h2 class="text-4xl font-extrabold text-gray-900">My Projects</h2>
-    <p class="text-gray-600 mt-3 max-w-md mx-auto">Showcasing my works with modern designs & powerful features.</p>
+<!------------------------------------------------>
+  <!-- Hero -->
+  <section class="text-center py-16 px-6">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Featured Projects</h1>
+    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+      A selection of projects that demonstrate my approach to problem-solving, clean code, and user-centered design.
+    </p>
   </section>
 
-  <!-- Projects Grid -->
-  <section class="max-w-6xl mx-auto px-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 pb-24">
+<!------------------------------------------------>
+  <!-- Projects -->
+  <section class="max-w-4xl mx-auto px-6 space-y-20 pb-24">
 
-    <!-- Project Card -->
-    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
-      <img src="https://placehold.co/600x400/4338CA/FFFFFF?text=One+School+E-Report" class="rounded-lg mb-4" />
-      <h3 class="text-lg font-bold">One School E-Report</h3>
-      <p class="text-sm text-gray-600 mt-2">A digital system for school reporting communication.</p>
-      <a href="https://one-school-e-report.vercel.app/" target="_blank" class="text-indigo-600 text-sm inline-block mt-3 hover:underline">Live Demo →</a>
+    <!-- Project 1: One School E-Report -->
+    <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="md:w-1/2">
+        <img src="foto/ERepor.png" alt="One School E-Report" class="w-full rounded-xl shadow-md border border-gray-100">
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="text-2xl font-bold text-gray-900">One School E-Report</h2>
+        <p class="text-gray-600 mt-3 leading-relaxed">
+          A secure reporting platform for schools that connects students, parents, and teachers with real-time status tracking and confidential communication.
+        </p>
+        <div class="mt-5 pt-4 border-t border-gray-200">
+          <p class="text-sm font-medium text-gray-800 mb-2">Role & Technology</p>
+          <p class="text-sm text-gray-600 mb-3">
+            <strong>Role:</strong> Full-stack developer & UI/UX designer<br>
+            <strong>Challenge:</strong> Ensuring privacy while maintaining transparency.<br>
+            <strong>Solution:</strong> Built a closed-loop system with dual validation (system + teacher).
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-html5 text-orange-500"></i> HTML
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-css3-alt text-blue-600"></i> CSS
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-js text-yellow-500"></i> JavaScript
+            </span>
+          </div>
+        </div>
+        <a href="https://one-school-e-report.vercel.app/" target="_blank" class="mt-4 inline-block text-indigo-600 font-medium hover:underline">Live Demo →</a>
+      </div>
     </div>
-
-    <!-- Project Card -->
-    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
-      <img src="https://placehold.co/600x400/DC2626/FFFFFF?text=M-Ahsan+Psychology" class="rounded-lg mb-4" />
-      <h3 class="text-lg font-bold">M-Ahsan Psychology</h3>
-      <p class="text-sm text-gray-600 mt-2">Online therapy website with accessible UI design.</p>
-      <a href="https://m-ahsan-psychology.vercel.app/" target="_blank" class="text-indigo-600 text-sm inline-block mt-3 hover:underline">Live Demo →</a>
+<!------------------------------------------------>
+    <!-- Project 2: M-Ahsan Psychology -->
+    <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+      <div class="md:w-1/2">
+        <img src="foto/Psikolog.png" alt="M-Ahsan Psychology" class="w-full rounded-xl shadow-md border border-gray-100">
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="text-2xl font-bold text-gray-900">M-Ahsan Psychology</h2>
+        <p class="text-gray-600 mt-3 leading-relaxed">
+          A bilingual (EN/ID), HIPAA-compliant teletherapy platform for U.S. clients, featuring licensure info and secure session booking.
+        </p>
+        <div class="mt-5 pt-4 border-t border-gray-200">
+          <p class="text-sm font-medium text-gray-800 mb-2">Role & Technology</p>
+          <p class="text-sm text-gray-600 mb-3">
+            <strong>Role:</strong> Frontend developer & content strategist<br>
+            <strong>Challenge:</strong> Building trust through design and compliance.<br>
+            <strong>Solution:</strong> Used human-centered visuals, clear legal info, and minimal UI.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-html5 text-orange-500"></i> HTML
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-css3-alt text-blue-600"></i> CSS
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fas fa-paint-brush text-indigo-600"></i> Tailwind CSS
+            </span>
+          </div>
+        </div>
+        <a href="https://m-ahsan-psychology.vercel.app/" target="_blank" class="mt-4 inline-block text-indigo-600 font-medium hover:underline">Live Demo →</a>
+      </div>
     </div>
-
-    <!-- Project Card -->
-    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
-      <img src="https://placehold.co/600x400/059669/FFFFFF?text=Prime+Edge+Digital" class="rounded-lg mb-4" />
-      <h3 class="text-lg font-bold">Prime Edge Digital</h3>
-      <p class="text-sm text-gray-600 mt-2">Corporate digital solutions service website.</p>
-      <a href="https://prime-edge-digital.vercel.app/" target="_blank" class="text-indigo-600 text-sm inline-block mt-3 hover:underline">Live Demo →</a>
+<!------------------------------------------------>
+    <!-- Project 3: Prime Edge Digital -->
+    <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="md:w-1/2">
+        <img src="foto/primeEdge .png" alt="Prime Edge Digital" class="w-full rounded-xl shadow-md border border-gray-100">
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="text-2xl font-bold text-gray-900">Prime Edge Digital</h2>
+        <p class="text-gray-600 mt-3 leading-relaxed">
+          A corporate website for a digital agency, showcasing services, team, and client success stories with a conversion-focused UX.
+        </p>
+        <div class="mt-5 pt-4 border-t border-gray-200">
+          <p class="text-sm font-medium text-gray-800 mb-2">Role & Technology</p>
+          <p class="text-sm text-gray-600 mb-3">
+            <strong>Role:</strong> Lead frontend developer<br>
+            <strong>Challenge:</strong> Balancing aesthetics with performance & SEO.<br>
+            <strong>Solution:</strong> Modular components, semantic HTML, optimized asset loading.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-html5 text-orange-500"></i> HTML
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-css3-alt text-blue-600"></i> CSS
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-js text-yellow-500"></i> JavaScript
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fas fa-paint-brush text-indigo-600"></i> Tailwind CSS
+            </span>
+          </div>
+        </div>
+        <a href="https://prime-edge-digital.vercel.app/" target="_blank" class="mt-4 inline-block text-indigo-600 font-medium hover:underline">Live Demo →</a>
+      </div>
     </div>
-
-    <!-- Project Card -->
-    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
-      <img src="https://placehold.co/600x400/7C3AED/FFFFFF?text=Catatan+App" class="rounded-lg mb-4" />
-      <h3 class="text-lg font-bold">Catatan App</h3>
-      <p class="text-sm text-gray-600 mt-2">Simple note-taking app with Firebase integration.</p>
-      <a href="#" class="text-indigo-600 text-sm inline-block mt-3 hover:underline">View Code →</a>
+<!------------------------------------------------>
+    <!-- Project 4: Catatan App -->
+    <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+      <div class="md:w-1/2">
+        <img src="foto/catatan-app.png" alt="Catatan Application" class="w-full rounded-xl shadow-md border border-gray-100">
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="text-2xl font-bold text-gray-900">Catatan Application</h2>
+        <p class="text-gray-600 mt-3 leading-relaxed">
+          A minimalist note-taking app with user authentication and real-time sync across devices.
+        </p>
+        <div class="mt-5 pt-4 border-t border-gray-200">
+          <p class="text-sm font-medium text-gray-800 mb-2">Role & Technology</p>
+          <p class="text-sm text-gray-600 mb-3">
+            <strong>Role:</strong> Solo full-stack developer<br>
+            <strong>Challenge:</strong> Securing user data without a custom backend.<br>
+            <strong>Solution:</strong> Leveraged Firebase Auth and Firestore with strict security rules.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-vuejs text-green-600"></i> Vue.js
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fab fa-google text-red-500"></i> Firebase
+            </span>
+            <span class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-xs">
+              <i class="fas fa-paint-brush text-indigo-600"></i> Tailwind CSS
+            </span>
+          </div>
+        </div>
+        <a href="#" class="mt-4 inline-block text-indigo-600 font-medium hover:underline">View Code →</a>
+      </div>
     </div>
 
   </section>
 
+<!------------------------------------------------>
   <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 py-8">
-    © 2025 Muhammad Ahsan — Built with Tailwind CSS
+  <footer class="text-center text-gray-500 text-sm py-8 border-t">
+    © 2025 Muhammad Ahsan. All rights reserved.
   </footer>
 
 </body>
