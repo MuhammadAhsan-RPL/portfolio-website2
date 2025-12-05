@@ -1,2 +1,32 @@
-# portfolio-website
-This portfolio website showcases my profile, skills, and project results. It features a simple yet elegant design to showcase your work and development in programming and web design in a neat and attractive way.
+# Portfolio Website
+
+A personal portfolio showcasing projects, skills, and experience as a Web Developer.
+
+## ✨ Features
+- Responsive and modern UI design
+- Showcases real development projects
+- Contact form for hiring or collaboration
+- Smooth navigation and clean layout
+- Highlighted skills and tech stacks
+
+---
+
+## 🔗 Links
+- **View Portfolio Website**  
+  https://portfolio-website2-rouge.vercel.app/
+
+- **View All Projects (GitHub)**  
+  https://portfolio-website2-rouge.vercel.app/project.html
+
+---
+
+## 🧑‍💻 Tech Stack
+HTML • CSS • JavaScript • TailwindCSS  
+Responsive Web Design
+
+---
+
+## 🚀 Deployment Status
+✔️ Production — Vercel
+
+---
