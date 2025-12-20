@@ -16,7 +16,7 @@ A personal portfolio showcasing projects, skills, and experience as a Web Develo
   https://portfolio-website2-rouge.vercel.app/
 
 - **View All Projects (GitHub)**  
-  https://portfolio-website2-rouge.vercel.app/project.html
+  https://github.com/MuhammadAhsan-RPL
 
 ---
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Muhammad Ahsan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            primary: '#4338CA',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+<!------------------------------------------------->
+  <!-- Header -->
+<header class="py-6 px-4 border-b">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <a href="index.html" class="text-xl font-bold text-gray-900">Muhammad Ahsan</a>
+
+    <!-- Navigation Menu -->
+    <nav class="flex space-x-8">
+      <a href="index.html" class="text-gray-700 hover:text-primary font-medium">Home</a>
+      <a href="about.html" class="text-primary font-medium border-b-2 border-primary">About Me</a>
+      <a href="https://bento.me/muhammad-ahsan" target="_blank" class="text-gray-700 hover:text-primary font-medium">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!------------------------------------------------->
+  <!-- About Section -->
+  <section class="px-4 py-20 max-w-4xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <!-- Foto -->
+      <div class="flex justify-center md:justify-start">
+        <img 
+          src="https://mahsan-portfolioweb.vercel.app/gambar2.jpeg" 
+          alt="Muhammad Ahsan"
+          class="w-48 h-48 md:w-60 md:h-60 rounded-2xl object-cover border-2 border-gray-200 shadow-lg"
+        />
+      </div>
+
+      <!-- Biodata -->
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl font-bold">Muhammad Ahsan</h1>
+        <p class="text-indigo-600 font-medium mt-1">Web Developer & Problem Solver</p>
+
+        <div class="mt-8 space-y-4 text-gray-700 leading-relaxed">
+          <p>
+            I build fast, accessible, and user-centered web applications that solve real business problems — not just pretty interfaces.
+          </p>
+          <p>
+            With over 3 years of experience, I’ve delivered projects for clients in the U.S. and Southeast Asia using modern JavaScript stacks.
+          </p>
+          <p>
+            Fluent in <strong>English and Bahasa Indonesia</strong>, I specialize in clean code, performance, and cross-cultural collaboration.
+          </p>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="font-bold text-gray-900 mb-3">Technical Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">HTML & CSS</span>
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Tailwind CSS</span>
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">JavaScript</span>
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Vue.js</span>
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">React</span>
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Node.js</span>
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!------------------------------------------------->
+   <!-- Footer -->
+  <footer class="px-4 py-10 text-center text-gray-500 text-sm">
+    &copy; 2025 Muhammad Ahsan. Crafted with care in HTML & Tailwind CSS.
+  </footer>
+</body>
+</html>
