@@ -202,7 +202,7 @@
     <!-- Form Card -->
     <div class="mt-10 bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
       <h3 class="text-2xl font-bold text-gray-900 mb-6">Send a Message ✉️</h3>
-      <form class="space-y-5">
+      <form id="contactForm" class="space-y-5">
         <div class="border-b border-gray-300 pb-1">
           <input 
             type="text" 
@@ -262,5 +262,48 @@
   <footer class="px-4 py-10 text-center text-gray-500 text-sm">
     &copy; 2025 Muhammad Ahsan. Crafted with care in HTML & Tailwind CSS.
   </footer>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyADNZtmZ5OvHl2PANxl8-yTNlJRGy1SSJs",
+    authDomain: "portofolio-website-ahsan.firebaseapp.com",
+    projectId: "portofolio-website-ahsan",
+    storageBucket: "portofolio-website-ahsan.firebasestorage.app",
+    messagingSenderId: "210421348858",
+    appId: "1:210421348858:web:2d1cd7ca623ed385f9cc43"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = form.querySelector('input[type="text"]').value;
+    const email = form.querySelector('input[type="email"]').value;
+    const message = form.querySelector("textarea").value;
+
+    try {
+      await addDoc(collection(db, "work_together"), {
+        name,
+        email,
+        message,
+        createdAt: serverTimestamp()
+      });
+
+      alert("✅ Message sent successfully!");
+      form.reset();
+    } catch (err) {
+      alert("❌ Failed to send message");
+      console.error(err);
+    }
+  });
+</script>
+
 </body>
 </html>
