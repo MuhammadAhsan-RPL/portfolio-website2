@@ -198,6 +198,7 @@
       I’m currently open to freelance projects and collaborations. Send me a message — I’d love to hear about what you’re building.
     </p>
 
+
     <!-- Form Card -->
     <div class="mt-10 bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
       <h3 class="text-2xl font-bold text-gray-900 mb-6">Send a Message ✉️</h3>
@@ -256,103 +257,103 @@
 </section>
 
 
+<!------------------------------------------------>
 
   <!-- Footer -->
   <footer class="px-4 py-10 text-center text-gray-500 text-sm">
     &copy; 2025 Muhammad Ahsan. Crafted with care in HTML & Tailwind CSS.
   </footer>
 
+  
+<!------------------------------------------------>
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyADNZtmZ5OvHl2PANxl8-yTNlJRGy1SSJs",
-    authDomain: "portofolio-website-ahsan.firebaseapp.com",
-    projectId: "portofolio-website-ahsan",
-    storageBucket: "portofolio-website-ahsan.firebasestorage.app",
-    messagingSenderId: "210421348858",
-    appId: "1:210421348858:web:2d1cd7ca623ed385f9cc43"
-  };
+// ===== Firebase Config =====
+const firebaseConfig = {
+  apiKey: "AIzaSyADNZtmZ5OvHl2PANxl8-yTNlJRGy1SSJs",
+  authDomain: "portofolio-website-ahsan.firebaseapp.com",
+  projectId: "portofolio-website-ahsan",
+  storageBucket: "portofolio-website-ahsan.firebasestorage.app",
+  messagingSenderId: "210421348858",
+  appId: "1:210421348858:web:2d1cd7ca623ed385f9cc43"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
-  const form = document.getElementById("contactForm");
+const form = document.getElementById("contactForm");
 
-  // ===== Toast Notification Function =====
-  function showToast(message, type = "success") {
-    const wrapper = document.getElementById("toastWrapper");
-    const toast = document.getElementById("toast");
-    const toastMessage = document.getElementById("toastMessage");
+// ===== Toast Notification Function (di tengah atas) =====
+function showToast(message, type = "success") {
+  const wrapper = document.getElementById("toastWrapper");
+  const toast = document.getElementById("toast");
+  const toastMessage = document.getElementById("toastMessage");
 
-    toastMessage.textContent = message;
+  toastMessage.textContent = message;
 
-    if (type === "success") {
-      toast.className = "flex items-center gap-3 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
-    } else {
-      toast.className = "flex items-center gap-3 bg-red-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
-    }
-
-    wrapper.classList.remove("hidden");
-
-    setTimeout(() => {
-      wrapper.classList.add("hidden");
-    }, 3000);
+  if (type === "success") {
+    toast.className = "flex items-center gap-3 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
+  } else {
+    toast.className = "flex items-center gap-3 bg-red-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
   }
 
-  // ===== Form Submit Handler =====
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  wrapper.classList.remove("hidden");
 
-    const name = form.querySelector('input[type="text"]').value;
-    const email = form.querySelector('input[type="email"]').value;
-    const message = form.querySelector("textarea").value;
+  setTimeout(() => {
+    wrapper.classList.add("hidden");
+  }, 10000);
+}
 
-    try {
-      await addDoc(collection(db, "work_together"), {
-        name,
-        email,
-        message,
-        createdAt: serverTimestamp()
-      });
+// ===== Form Submit Handler dengan Firebase Auth + Verifikasi =====
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      form.reset(); // Reset form
-      showToast("Thank you for trusting me to collaborate with you. I’ll get back to you as soon as possible!", "success");
-    } catch (err) {
-      console.error(err);
-      showToast("Something went wrong. Please try again.", "error");
-    }
-  });
+  const name = form.querySelector('input[type="text"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const message = form.querySelector("textarea").value;
+
+  if (!email || !name || !message) {
+    showToast("Please fill in all fields!", "error");
+    return;
+  }
+
+  try {
+    // Buat password sementara
+    const tempPassword = Math.random().toString(36).slice(-8);
+
+    // Buat akun user sementara
+    const userCredential = await createUserWithEmailAndPassword(auth, email, tempPassword);
+
+    // Kirim verifikasi email
+    await sendEmailVerification(userCredential.user);
+
+    showToast("Check your email to verify before we receive your message.", "success");
+
+    // Simpan pesan ke Firestore HANYA jika email sudah diverifikasi
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user && user.emailVerified) {
+        await addDoc(collection(db, "work_together"), {
+          name,
+          email,
+          message,
+          createdAt: serverTimestamp()
+        });
+        form.reset();
+        showToast("Thank you for trusting me to collaborate with you 😁😁");
+      }
+      unsubscribe(); // stop listening
+    });
+
+  } catch (err) {
+    console.error(err);
+    showToast(err.message, "");
+  }
+});
 </script>
 
-<!-- ===== Toast Notification HTML ===== -->
-<div
-  id="toastWrapper"
-  class="fixed inset-0 flex items-center justify-center z-50 hidden"
->
-  <div
-    id="toast"
-    class="flex items-center gap-3 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn"
-  >
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-      viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-    <span id="toastMessage"></span>
-  </div>
-</div>
-
-<!-- ===== Toast Animation ===== -->
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
-}
-</style>
 </body>
 </html>
