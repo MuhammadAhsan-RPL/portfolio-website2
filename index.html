@@ -103,10 +103,9 @@
         <span>Tailwind CSS</span>
       </div>
 
-      <span class="badge bg-light text-dark d-flex align-items-center gap-1 px-2 py-1 rounded">
+      <span class="flex items-center gap-1 px-2 py-1 rounded bg-gray-200 text-gray-800">
   <i class="fab fa-bootstrap"></i> Bootstrap
 </span>
-
     </div>
   </div>
 </section>
@@ -242,7 +241,7 @@
             <i class="fab fa-linkedin-in text-xl"></i>
           </a>
 
-          <a href="https://wa.me/6281514421495?text=Lets%20Work.%20Together,%20With%20Me,%20Lets GOO."  target="_blank" class="text-gray-500 hover:text-indigo-700 transition-colors">
+          <a href="https://wa.me/6281514421495?text=Lets%20Work.%20Together,%20With%20Me,%20Lets%20GOO."  target="_blank" class="text-gray-500 hover:text-indigo-700 transition-colors">
             <i class="fab fa-whatsapp text-xl"></i>
           </a>
           <a href="https://www.instagram.com/asanalfgn/" target="_blank" class="text-gray-500 hover:text-indigo-700 transition-colors">
@@ -267,6 +266,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
+  // Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyADNZtmZ5OvHl2PANxl8-yTNlJRGy1SSJs",
     authDomain: "portofolio-website-ahsan.firebaseapp.com",
@@ -281,31 +281,28 @@
 
   const form = document.getElementById("contactForm");
 
+  // ===== Toast Notification Function =====
   function showToast(message, type = "success") {
-  const toast = document.getElementById("toast");
-  const toastMessage = document.getElementById("toast-message");
-  const toastIcon = document.getElementById("toast-icon");
+    const wrapper = document.getElementById("toastWrapper");
+    const toast = document.getElementById("toast");
+    const toastMessage = document.getElementById("toastMessage");
 
-  toastMessage.textContent = message;
+    toastMessage.textContent = message;
 
-  if (type === "success") {
-    toast.className =
-      "fixed top-5 right-5 z-50 flex items-center gap-3 rounded-xl bg-green-600 px-5 py-4 text-white shadow-lg";
-    toastIcon.textContent = "✔";
-  } else {
-    toast.className =
-      "fixed top-5 right-5 z-50 flex items-center gap-3 rounded-xl bg-red-600 px-5 py-4 text-white shadow-lg";
-    toastIcon.textContent = "✖";
+    if (type === "success") {
+      toast.className = "flex items-center gap-3 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
+    } else {
+      toast.className = "flex items-center gap-3 bg-red-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
+    }
+
+    wrapper.classList.remove("hidden");
+
+    setTimeout(() => {
+      wrapper.classList.add("hidden");
+    }, 3000);
   }
 
-  toast.classList.remove("hidden");
-
-  setTimeout(() => {
-    toast.classList.add("hidden");
-  }, 3000);
-}
-
-
+  // ===== Form Submit Handler =====
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -321,28 +318,41 @@
         createdAt: serverTimestamp()
       });
 
-      showToast(
-  "Thank you for trusting me to collaborate with you. I’ll get back to you as soon as possible!",
-  "success"
-);
+      form.reset(); // Reset form
+      showToast("Thank you for trusting me to collaborate with you. I’ll get back to you as soon as possible!", "success");
     } catch (err) {
-      alert("❌ Sorry, Failed to send message");
       console.error(err);
+      showToast("Something went wrong. Please try again.", "error");
     }
   });
 </script>
 
-<!-- Toast Notification -->
+<!-- ===== Toast Notification HTML ===== -->
 <div
-  id="toast"
-  class="fixed top-5 right-5 z-50 hidden items-center gap-3 rounded-xl px-5 py-4 text-white shadow-lg transition-all duration-300"
+  id="toastWrapper"
+  class="fixed inset-0 flex items-center justify-center z-50 hidden"
 >
-  <span id="toast-icon" class="text-xl">✔</span>
-  <span id="toast-message" class="text-sm font-medium">
-    Success
-  </span>
+  <div
+    id="toast"
+    class="flex items-center gap-3 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+      viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    <span id="toastMessage"></span>
+  </div>
 </div>
 
-
+<!-- ===== Toast Animation ===== -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+</style>
 </body>
 </html>
