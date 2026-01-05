@@ -328,6 +328,43 @@ form.addEventListener("submit", async (e) => {
 });
 </script>
 
+<!-- Toast HTML (letakkan di body paling bawah) -->
+<div id="toastWrapper" class="fixed inset-0 flex items-start justify-center pt-10 z-50 pointer-events-none hidden">
+  <div id="toast" class="bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 pointer-events-auto">
+    <span id="toastMessage"></span>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+</style>
+
+<script>
+function showToast(message, type="success") {
+  const wrapper = document.getElementById("toastWrapper");
+  const toast = document.getElementById("toast");
+  const toastMessage = document.getElementById("toastMessage");
+
+  toastMessage.textContent = message;
+
+  if(type==="success") {
+    toast.className = "bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 pointer-events-auto animate-fadeIn";
+  } else {
+    toast.className = "bg-red-600 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 pointer-events-auto animate-fadeIn";
+  }
+
+  wrapper.classList.remove("hidden");
+
+  setTimeout(() => {
+    wrapper.classList.add("hidden");
+  }, 10000);
+}
+</script>
+
 
 </body>
 </html>
