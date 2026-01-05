@@ -266,12 +266,10 @@
 
   
 <!------------------------------------------------>
-  <script type="module">
+<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-// ===== Firebase Config =====
 const firebaseConfig = {
   apiKey: "AIzaSyADNZtmZ5OvHl2PANxl8-yTNlJRGy1SSJs",
   authDomain: "portofolio-website-ahsan.firebaseapp.com",
@@ -283,77 +281,53 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
 
 const form = document.getElementById("contactForm");
 
-// ===== Toast Notification Function (di tengah atas) =====
-function showToast(message, type = "success") {
-  const wrapper = document.getElementById("toastWrapper");
-  const toast = document.getElementById("toast");
-  const toastMessage = document.getElementById("toastMessage");
-
-  toastMessage.textContent = message;
-
-  if (type === "success") {
-    toast.className = "flex items-center gap-3 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
-  } else {
-    toast.className = "flex items-center gap-3 bg-red-600 text-white px-6 py-4 rounded-xl shadow-lg animate-fadeIn";
-  }
-
-  wrapper.classList.remove("hidden");
-
-  setTimeout(() => {
-    wrapper.classList.add("hidden");
-  }, 10000);
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// ===== Form Submit Handler dengan Firebase Auth + Verifikasi =====
+function showToast(message, type = "success") {
+  const wrapper = document.getElementById("toastWrapper");
+  const toastMessage = document.getElementById("toastMessage");
+  toastMessage.textContent = message;
+  wrapper.classList.remove("hidden");
+  setTimeout(() => wrapper.classList.add("hidden"), 5000);
+}
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const name = form.querySelector('input[type="text"]').value;
   const email = form.querySelector('input[type="email"]').value;
-  const message = form.querySelector("textarea").value;
+  const message = form.querySelector('textarea').value;
 
-  if (!email || !name || !message) {
-    showToast("Please fill in all fields!", "error");
+  if (!name || !email || !message) {
+    showToast("Please fill all fields!", "error");
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    showToast("Please enter a valid email!", "error");
     return;
   }
 
   try {
-    // Buat password sementara
-    const tempPassword = Math.random().toString(36).slice(-8);
-
-    // Buat akun user sementara
-    const userCredential = await createUserWithEmailAndPassword(auth, email, tempPassword);
-
-    // Kirim verifikasi email
-    await sendEmailVerification(userCredential.user);
-
-    showToast("Check your email to verify before we receive your message.", "success");
-
-    // Simpan pesan ke Firestore HANYA jika email sudah diverifikasi
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user && user.emailVerified) {
-        await addDoc(collection(db, "work_together"), {
-          name,
-          email,
-          message,
-          createdAt: serverTimestamp()
-        });
-        form.reset();
-        showToast("Thank you for trusting me to collaborate with you 😁😁");
-      }
-      unsubscribe(); // stop listening
+    await addDoc(collection(db, "work_together"), {
+      name,
+      email,
+      message,
+      createdAt: serverTimestamp()
     });
-
+    form.reset();
+    showToast( "Thank you for trusting me to collaborate with you 😁😁");
   } catch (err) {
     console.error(err);
-    showToast(err.message, "");
+    showToast("Sorry, something went wrong 🙏🏻🙏🏻 Please try again.");
   }
 });
 </script>
+
 
 </body>
 </html>
