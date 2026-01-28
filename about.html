@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Muhammad Ahsan</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
-            primary: '#4338CA',
+            primary: '#4F46E5',
           }
         }
       }
@@ -21,75 +21,194 @@
   </script>
 </head>
 
-<body class="bg-white text-gray-800 font-sans">
+<body class="bg-white text-gray-800 font-sans scroll-smooth">
 
-  <!------------------------------------------------->
-  <!-- Header -->
-  <header class="py-6 px-4 border-b">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-xl font-bold text-gray-900">Muhammad Ahsan</a>
+<!-- Navbar -->
+<header class="sticky top-0 bg-white/80 backdrop-blur border-b z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-4">
+    <a href="index.html" class="text-xl font-bold">Muhammad Ahsan</a>
+    <nav class="flex space-x-6">
+      <a href="index.html" class="text-gray-600 hover:text-primary transition">Home</a>
+      <a href="about.html" class="text-primary font-semibold border-b-2 border-primary">About</a>
+      <a href="https://bento.me/muhammad-ahsan" target="_blank" class="text-gray-600 hover:text-primary transition">Contact</a>
+    </nav>
+  </div>
+</header>
 
-      <!-- Navigation Menu -->
-      <nav class="flex space-x-8">
-        <a href="index.html" class="text-gray-700 hover:text-primary font-medium">Home</a>
-        <a href="about.html" class="text-primary font-medium border-b-2 border-primary">About Me</a>
-        <a href="https://bento.me/muhammad-ahsan" target="_blank"
-          class="text-gray-700 hover:text-primary font-medium">Contact</a>
-      </nav>
+<!-- Profile Hero -->
+<section class="px-4 py-16 max-w-4xl mx-auto">
+  <div class="flex flex-col md:flex-row items-center gap-8">
+
+    <img src="foto/ahsan.jpeg" alt="Muhammad Ahsan"
+      class="w-40 h-40 rounded-2xl object-cover shadow-lg"/>
+
+    <div>
+      <h1 class="text-3xl font-bold">About Me</h1>
+      <p class="text-indigo-600 mt-1">Muhammad Ahsan · Web Developer</p>
+
+      <p class="mt-4 text-gray-600 leading-relaxed">
+        I am a passionate web developer who believes that technology should not only look good,
+        but also solve real problems. My journey started with curiosity and has grown into a strong
+        commitment to building meaningful and user-friendly digital experiences.
+      </p>
     </div>
-  </header>
 
-  <!------------------------------------------------->
-  <!-- About Section -->
-  <section class="px-4 py-20 max-w-4xl mx-auto">
-    <div class="flex flex-col md:flex-row items-center gap-12">
-      <!-- Foto -->
-      <div class="flex justify-center md:justify-start">
-        <img src="foto/ahsan.jpeg" alt="Muhammad Ahsan"
-          class="w-48 h-48 md:w-60 md:h-60 rounded-2xl object-cover border-2 border-gray-200 shadow-lg" />
+  </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="px-4 py-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+  <div class="p-6 bg-gradient-to-br from-gray-50 to-indigo-50 rounded-2xl shadow-sm">
+    <h3 class="font-semibold text-lg mb-2">🎯 Mission</h3>
+    <p class="text-gray-600 leading-relaxed">
+      My mission is to design and develop web applications that are meaningful, accessible,
+      and easy to use while solving real-world problems.
+    </p>
+  </div>
+
+  <div class="p-6 bg-gradient-to-br from-gray-50 to-indigo-50 rounded-2xl shadow-sm">
+    <h3 class="font-semibold text-lg mb-2">🌍 Vision</h3>
+    <p class="text-gray-600 leading-relaxed">
+      My vision is to grow into a professional software engineer and contribute to projects
+      that bring positive impact to education and society.
+    </p>
+  </div>
+</section>
+
+<!-- Technical Skills -->
+<section class="px-4 py-16 max-w-4xl mx-auto">
+  <h2 class="text-xl font-bold mb-6">Technical Skills</h2>
+
+  <div class="space-y-4">
+
+    <div>
+      <div class="flex justify-between text-sm mb-1">
+        <span>HTML & CSS</span>
+        <span>90%</span>
       </div>
-
-      <!-- Biodata -->
-      <div class="text-center md:text-left">
-        <h1 class="text-3xl font-bold">Muhammad Ahsan</h1>
-        <p class="text-indigo-600 font-medium mt-1">Web Developer & Problem Solver</p>
-
-        <div class="mt-8 space-y-4 text-gray-700 leading-relaxed">
-          <p>
-            I build fast, accessible, and user-centered web applications that solve real business problems — not just
-            pretty interfaces.
-          </p>
-          <p>
-            With over 3 years of experience, I’ve delivered projects for clients in the U.S. and Southeast Asia using
-            modern JavaScript stacks.
-          </p>
-          <p>
-            Fluent in <strong>English and Bahasa Indonesia</strong>, I specialize in clean code, performance, and
-            cross-cultural collaboration.
-          </p>
-        </div>
-
-        <div class="mt-8">
-          <h3 class="font-bold text-gray-900 mb-3">Technical Skills</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">HTML & CSS</span>
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Tailwind CSS</span>
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">JavaScript</span>
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Bootstrap</span>
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Node.js</span>
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">Firebase</span>
-            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-full">MySQL</span>
-          </div>
-        </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div class="bg-indigo-600 h-2 rounded-full w-[90%]"></div>
       </div>
     </div>
-  </section>
 
-  <!------------------------------------------------->
-  <!-- Footer -->
-  <footer class="px-4 py-10 text-center text-gray-500 text-sm">
-    &copy; 2025 Muhammad Ahsan. Crafted with care in HTML & Tailwind CSS.
-  </footer>
+    <div>
+      <div class="flex justify-between text-sm mb-1">
+        <span>Tailwind CSS</span>
+        <span>85%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div class="bg-indigo-600 h-2 rounded-full w-[85%]"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex justify-between text-sm mb-1">
+        <span>JavaScript</span>
+        <span>75%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div class="bg-indigo-600 h-2 rounded-full w-[75%]"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex justify-between text-sm mb-1">
+        <span>PHP & MySQL</span>
+        <span>70%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div class="bg-indigo-600 h-2 rounded-full w-[70%]"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Experience Timeline -->
+<section class="px-4 py-16 max-w-4xl mx-auto">
+  <h2 class="text-xl font-bold mb-6">Experience</h2>
+
+  <div class="border-l-2 border-indigo-200 pl-6 space-y-6">
+
+    <div>
+      <span class="text-indigo-600 text-sm">2022 - Present</span>
+      <h3 class="font-semibold">Frontend Web Developer (Freelance)</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Developed responsive and accessible websites using HTML, Tailwind CSS, and JavaScript
+        with focus on performance and clean UI design.
+      </p>
+    </div>
+
+    <div>
+      <span class="text-indigo-600 text-sm">2021 - 2022</span>
+      <h3 class="font-semibold">Student Web Developer</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Built academic web projects such as portfolio websites, landing pages,
+        and simple web applications.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Education -->
+<section class="px-4 py-16 max-w-4xl mx-auto bg-gray-50 rounded-2xl">
+  <h2 class="text-xl font-bold mb-4">Education</h2>
+
+  <div>
+    <h3 class="font-semibold">Vocational High School (Software Engineering)</h3>
+    <p class="text-indigo-600 text-sm">2021 - 2024</p>
+    <p class="mt-2 text-gray-600">
+      Studied web development, programming fundamentals, and database management.
+    </p>
+  </div>
+</section>
+
+<!-- Certificates -->
+<section class="px-4 py-16 max-w-5xl mx-auto">
+  <h2 class="text-xl font-bold mb-6">Certificates</h2>
+
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="border rounded-xl overflow-hidden hover:shadow-md transition">
+      <img src="certificates/cert1.jpg" class="h-40 w-full object-cover">
+      <div class="p-3 text-sm">
+        Web Development Fundamentals · Dicoding (2023)
+      </div>
+    </div>
+
+    <div class="border rounded-xl overflow-hidden hover:shadow-md transition">
+      <img src="certificates/cert2.jpg" class="h-40 w-full object-cover">
+      <div class="p-3 text-sm">
+        JavaScript Programming · Online Course (2024)
+      </div>
+    </div>
+
+    <div class="border rounded-xl overflow-hidden hover:shadow-md transition">
+      <img src="certificates/cert3.jpg" class="h-40 w-full object-cover">
+      <div class="p-3 text-sm">
+        Frontend Developer · Bootcamp (2024)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-4 py-16 max-w-4xl mx-auto text-center">
+  <h2 class="text-xl font-bold mb-2">Let’s Connect</h2>
+  <p class="text-gray-600 mb-4">
+    If you’d like to collaborate or just say hello, feel free to reach out.
+  </p>
+
+  <a href="https://ahsanlinktree.framer.website/" target="_blank"
+    class="inline-block px-6 py-3 border border-indigo-600 text-indigo-600 rounded-xl hover:bg-indigo-50 transition">
+    Contact Me
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 text-center text-gray-500 text-sm border-t">
+  © 2026 Muhammad Ahsan. Built with HTML & Tailwind CSS.
+</footer>
+
 </body>
-
 </html>
